@@ -9,7 +9,7 @@ from Sherlock import app, LOGGER
 from Sherlock.Sherlock import ignore_blacklisted_users
 from Sherlock.sql.chat_sql import add_chat_to_db
 
-start_text = """
+START_TY = """
 Hey [{}](tg://user?id={}),
 I'm [Alexa🎶]
 I'm a music bot created by @mr_srlock.
@@ -43,7 +43,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply_photo(RR, start_text.format(name, user_id), reply_markup=btn)
+    await message.reply_photo(RR, START_TY.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 
