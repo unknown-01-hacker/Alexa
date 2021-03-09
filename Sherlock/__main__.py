@@ -43,7 +43,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    update.effective_message.reply(start_text.format(name, user_id), RR, reply_markup=btn)
+    await message.reply_photo(RR, start_text.format(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 
