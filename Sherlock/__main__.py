@@ -11,7 +11,7 @@ from Sherlock.sql.chat_sql import add_chat_to_db
 
 start_text = """
 Hey [{}](tg://user?id={}),
-I'm [Alexa🎶](https://telegra.ph/file/dbed7ae52ae9e91261abc.jpg)
+I'm [Alexa🎶]
 I'm a music bot created by @mr_srlock.
 Just send me the song name you want to download.
 Eg: ```/song Love me like you do```
@@ -24,7 +24,7 @@ owner_help = """
 /eval python code
 /chatlist get list of all chats
 """
-
+RR = "https://telegra.ph/file/dbed7ae52ae9e91261abc.jpg"
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
@@ -43,7 +43,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    await message.reply(start_text.format(name, user_id), RR, reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 
