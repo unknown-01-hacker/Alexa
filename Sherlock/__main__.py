@@ -2,6 +2,7 @@
 from config import OWNER_ID
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from Sherlock.modules import *
+from telegram.utils.helpers import escape_markdown
 from pyrogram import idle, filters
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
@@ -43,7 +44,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply_photo(RR, START_TY.format(name, user_id), reply_markup=btn)
+    await message.reply_photo(RR, START_TY.format(escape_markdown(name, user_id), reply_markup=btn)
     add_chat_to_db(str(chat_id))
 
 
