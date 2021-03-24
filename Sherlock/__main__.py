@@ -48,7 +48,6 @@ async def start(client, message):
     await message.reply_text(START_TY.format(escape_markdown(name, user_id), reply_markup=btn))
     
 
-
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def help(client, message):
     if message.from_user["id"] == OWNER_ID:
