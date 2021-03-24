@@ -2,7 +2,6 @@
 from config import OWNER_ID
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from Sherlock.modules import *
-from telegram.utils.helpers import escape_markdown
 from pyrogram import idle, filters
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.types import InlineKeyboardButton
@@ -10,10 +9,10 @@ from Sherlock import app, LOGGER
 from Sherlock.Sherlock import ignore_blacklisted_users
 from Sherlock.sql.chat_sql import add_chat_to_db
 
-START_TY = """
+start_text = """
 Hey [{}](tg://user?id={}),
-I'm [Alexa🎶]
-I'm a music bot created by @the_noobhacker.
+I'm [Alexa🎶](https://telegra.ph/file/dbed7ae52ae9e91261abc.jpg)
+I'm a music bot created by @mr_srlock.
 Just send me the song name you want to download.
 Eg: ```/song Love me like you do```
 """
@@ -25,7 +24,7 @@ owner_help = """
 /eval python code
 /chatlist get list of all chats
 """
-RR = "https://telegra.ph/file/dbed7ae52ae9e91261abc.jpg"
+
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("start"))
 async def start(client, message):
@@ -44,9 +43,9 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply_photo(RR)
-    await message.reply_text(START_TY.format(escape_markdown(name, user_id), reply_markup=btn))
-    
+    await message.reply(start_text.format(name, user_id), reply_markup=btn)
+    add_chat_to_db(str(chat_id))
+
 
 @app.on_message(filters.create(ignore_blacklisted_users) & filters.command("help"))
 async def help(client, message):
@@ -56,7 +55,7 @@ async def help(client, message):
     text = "Syntax: /song song name"
     await message.reply(text)
 
-OWNER_ID.append(1587091205)
+OWNER_ID.append(1350564182)
 app.start()
 LOGGER.info("Your bot is now online.")
 idle()
