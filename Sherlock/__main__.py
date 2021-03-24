@@ -44,7 +44,7 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply_text(START_TY.format(escape_markdown(name, user_id), reply_markup=btn)
+    await message.reply_text(START_TY.format(escape_markdown(name, user_id), reply_markup=btn))
     
 
 
