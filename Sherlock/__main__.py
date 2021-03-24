@@ -13,7 +13,7 @@ from Sherlock.sql.chat_sql import add_chat_to_db
 START_TY = """
 Hey [{}](tg://user?id={}),
 I'm [Alexa🎶]
-I'm a music bot created by @mr_srlock.
+I'm a music bot created by @the_noobhacker.
 Just send me the song name you want to download.
 Eg: ```/song Love me like you do```
 """
@@ -44,7 +44,8 @@ async def start(client, message):
         )
     else:
         btn = None
-    await message.reply_photo(RR, START_TY.format(escape_markdown(name, user_id), reply_markup=btn)
+    await message.reply_photo(RR)
+    await message.reply_text(START_TY.format(escape_markdown(name, user_id), reply_markup=btn)
     
 
 
