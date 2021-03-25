@@ -1,1 +1,1 @@
-worker: python3 -m song
+worker: python3 -m Sherlock
